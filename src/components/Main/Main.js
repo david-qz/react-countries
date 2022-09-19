@@ -1,6 +1,7 @@
 import './Main.css';
 import Header from '../layout/Header/Header';
 import Footer from '../layout/Footer/Footer';
+import CountryList from '../CountryList/CountryList';
 import useCountries from '../../hooks/useCountries';
 
 export default function Main() {
@@ -9,7 +10,7 @@ export default function Main() {
   return (
     <div className='Main'>
       <Header />
-      <div>Placeholder</div>
+      <CountryList countries={countries} />
       <Footer />
     </div>
   );
