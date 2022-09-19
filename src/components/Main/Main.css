@@ -1,0 +1,9 @@
+:root {
+    --header-footer-color: rgb(46, 110, 194);
+}
+
+.Main {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}

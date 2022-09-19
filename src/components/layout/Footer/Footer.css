@@ -1,0 +1,8 @@
+footer {
+    padding: 15px;
+    color: white;
+    background-color: var(--header-footer-color);
+    font-size: 0.8rem;
+    font-weight: 300;
+    text-align: right;
+}
