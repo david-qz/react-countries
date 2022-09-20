@@ -1,0 +1,10 @@
+.FilterControls {
+    padding: 20px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.FilterControls input, .FilterControls select {
+    padding: 5px;
+}
