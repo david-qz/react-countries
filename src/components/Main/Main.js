@@ -19,29 +19,39 @@ function filterCountries(countries, textFilter, continentFilter) {
   });
 }
 
+function sortCountriesByName(countries, sortIsAscending) {
+  const sortSign = sortIsAscending ? 1 : -1;
+
+  countries = [...countries];
+  countries.sort((a, b) => {
+    if (a.name === b.name) return 0;
+    return a.name < b.name ? sortSign : -sortSign;
+  });
+
+  return countries;
+}
+
 export default function Main() {
   const [countries, loading, error] = useCountries();
 
   const [textFilter, setTextFilter] = useState('');
   const [continentFilter, setContinentFilter] = useState('all');
+  const [sortIsAscending, setSortIsAscending] = useState(false);
 
   const filteredCountries = filterCountries(countries, textFilter, continentFilter);
-  filteredCountries.sort((a, b) => {
-    if (a.name > b.name) return 1;
-    if (a.name < b.name) return -1;
-    return 0;
-  });
+  const filteredAndSortedCountries = sortCountriesByName(filteredCountries, sortIsAscending);
 
   return (
     <main>
       <FilterControls
         textFilter={textFilter} setTextFilter={setTextFilter}
         continentFilter={continentFilter} setContinentFilter={setContinentFilter}
+        sortIsAscending={sortIsAscending} setSortIsAscending={setSortIsAscending}
       />
       {
         loading
           ? <LoadingIcon error={error}/>
-          : <CountryList countries={filteredCountries} />
+          : <CountryList countries={filteredAndSortedCountries} />
       }
     </main>
   );

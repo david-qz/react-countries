@@ -2,7 +2,8 @@ import './FilterControls.css';
 
 export default function FilterControls({
   textFilter, setTextFilter,
-  continentFilter, setContinentFilter
+  continentFilter, setContinentFilter,
+  sortIsAscending, setSortIsAscending
 }) {
   return (
     <div className='FilterControls'>
@@ -24,6 +25,13 @@ export default function FilterControls({
         <option value="South America">South America</option>
         <option value="Oceania">Oceania</option>
       </select>
+      <input
+        id="sort-direction"
+        type="checkbox"
+        onChange={(e) => setSortIsAscending(e.target.checked)}
+        checked={sortIsAscending}
+      ></input>
+      <label htmlFor="sort-direction"></label>
     </div>
   );
 }
