@@ -20,7 +20,7 @@ function filterCountries(countries, textFilter, continentFilter) {
 }
 
 export default function Main() {
-  const [countries, loading] = useCountries();
+  const [countries, loading, error] = useCountries();
 
   const [textFilter, setTextFilter] = useState('');
   const [continentFilter, setContinentFilter] = useState('all');
@@ -40,7 +40,7 @@ export default function Main() {
       />
       {
         loading
-          ? <LoadingIcon />
+          ? <LoadingIcon error={error}/>
           : <CountryList countries={filteredCountries} />
       }
     </main>

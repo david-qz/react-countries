@@ -4,6 +4,7 @@ import { fetchCountries } from '../services/countries';
 export default function useCountries() {
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetchCountries()
@@ -12,10 +13,11 @@ export default function useCountries() {
         setLoading(false);
       })
       .catch((error) => {
+        setError(true);
         // eslint-disable-next-line no-console
         console.error(error);
       });
   }, []);
 
-  return [countries, loading];
+  return [countries, loading, error];
 }

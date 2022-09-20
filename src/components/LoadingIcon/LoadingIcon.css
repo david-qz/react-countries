@@ -14,7 +14,10 @@
     position: absolute;
     top: 0;
     left: 0;
-    animation: rotate 0.8s linear infinite;
+}
+
+.rotating {
+    animation: rotate 1.5s linear infinite;
 }
 
 @keyframes rotate {
