@@ -1,5 +1,5 @@
 import './Header.css';
 
 export default function Header() {
-  return <header>The Countries</header>;
+  return <header>Flags of the World</header>;
 }
