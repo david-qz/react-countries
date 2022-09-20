@@ -1,6 +1,4 @@
 import './Main.css';
-import Header from '../layout/Header/Header';
-import Footer from '../layout/Footer/Footer';
 import FilterControls from '../FilterControls/FilterControls';
 import CountryList from '../CountryList/CountryList';
 import useCountries from '../../hooks/useCountries';
@@ -22,16 +20,12 @@ export default function Main() {
   });
 
   return (
-    <div className='Main'>
-      <Header />
-      <main>
-        <FilterControls
-          continentFilter={continentFilter} setContinentFilter={setContinentFilter}
-          textFilter={textFilter} setTextFilter={setTextFilter}
-        />
-        <CountryList countries={filteredCountries} />
-      </main>
-      <Footer />
-    </div>
+    <main>
+      <FilterControls
+        continentFilter={continentFilter} setContinentFilter={setContinentFilter}
+        textFilter={textFilter} setTextFilter={setTextFilter}
+      />
+      <CountryList countries={filteredCountries} />
+    </main>
   );
 }
