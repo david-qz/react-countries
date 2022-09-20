@@ -1,8 +1,8 @@
 import './FilterControls.css';
 
 export default function FilterControls({
-  continentFilter, setContinentFilter,
-  textFilter, setTextFilter
+  textFilter, setTextFilter,
+  continentFilter, setContinentFilter
 }) {
   return (
     <div className='FilterControls'>

@@ -4,26 +4,33 @@ import CountryList from '../CountryList/CountryList';
 import useCountries from '../../hooks/useCountries';
 import { useState } from 'react';
 
+function filterCountries(countries, textFilter, continentFilter) {
+  return countries.filter(country => {
+    const { continent, name } = country;
+
+    if (!(continentFilter === 'all' || continent === continentFilter))
+      return false;
+
+    if (!(name.match(new RegExp(`.*${textFilter}.*`, 'i'))))
+      return false;
+
+    return true;
+  });
+}
+
 export default function Main() {
   const countries = useCountries();
 
-  const [continentFilter, setContinentFilter] = useState('all');
   const [textFilter, setTextFilter] = useState('');
+  const [continentFilter, setContinentFilter] = useState('all');
 
-  let filteredCountries = countries.filter(country => {
-    if (continentFilter === 'all') return true;
-    return country.continent === continentFilter;
-  });
-
-  filteredCountries = filteredCountries.filter(country => {
-    return country.name.match(new RegExp(`.*${textFilter}.*`, 'i'));
-  });
+  const filteredCountries = filterCountries(countries, textFilter, continentFilter);
 
   return (
     <main>
       <FilterControls
-        continentFilter={continentFilter} setContinentFilter={setContinentFilter}
         textFilter={textFilter} setTextFilter={setTextFilter}
+        continentFilter={continentFilter} setContinentFilter={setContinentFilter}
       />
       <CountryList countries={filteredCountries} />
     </main>
