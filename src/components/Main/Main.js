@@ -1,6 +1,7 @@
 import './Main.css';
 import FilterControls from '../FilterControls/FilterControls';
 import CountryList from '../CountryList/CountryList';
+import LoadingIcon from '../LoadingIcon/LoadingIcon';
 import useCountries from '../../hooks/useCountries';
 import { useState } from 'react';
 
@@ -19,7 +20,7 @@ function filterCountries(countries, textFilter, continentFilter) {
 }
 
 export default function Main() {
-  const countries = useCountries();
+  const [countries, loading] = useCountries();
 
   const [textFilter, setTextFilter] = useState('');
   const [continentFilter, setContinentFilter] = useState('all');
@@ -37,7 +38,11 @@ export default function Main() {
         textFilter={textFilter} setTextFilter={setTextFilter}
         continentFilter={continentFilter} setContinentFilter={setContinentFilter}
       />
-      <CountryList countries={filteredCountries} />
+      {
+        loading
+          ? <LoadingIcon />
+          : <CountryList countries={filteredCountries} />
+      }
     </main>
   );
 }
