@@ -20,12 +20,11 @@ function filterCountries(countries, textFilter, continentFilter) {
 }
 
 function sortCountriesByName(countries, sortIsAscending) {
-  const sortSign = sortIsAscending ? 1 : -1;
+  const sortSign = sortIsAscending ? -1 : 1;
 
   countries = [...countries];
   countries.sort((a, b) => {
-    if (a.name === b.name) return 0;
-    return a.name < b.name ? sortSign : -sortSign;
+    return a.name.localeCompare(b.name) * sortSign;
   });
 
   return countries;
