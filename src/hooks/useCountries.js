@@ -7,16 +7,18 @@ export default function useCountries() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetchCountries()
-      .then((countries) => {
+    async function loadCountries() {
+      try {
+        const countries = await fetchCountries();
         setCountries(countries);
         setLoading(false);
-      })
-      .catch((error) => {
+      } catch (error) {
         setError(true);
         // eslint-disable-next-line no-console
         console.error(error);
-      });
+      }
+    }
+    loadCountries();
   }, []);
 
   return [countries, loading, error];
