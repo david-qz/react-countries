@@ -1,0 +1,22 @@
+.FilterControls {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+.FilterControls input, .FilterControls select {
+    padding: 5px;
+}
+
+.FilterControls input[type="checkbox"] {
+    display: none;
+}
+
+.FilterControls input[type="checkbox"] + label::after {
+    content: '▼';
+}
+
+.FilterControls input[type="checkbox"]:checked + label::after {
+    content: '▲';
+}
